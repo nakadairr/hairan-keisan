@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>基礎体温と排卵日の関係｜グラフの見方・低温期・高温期を解説</title>
+<meta name="description" content="基礎体温で排卵日を知る方法を解説。低温期・高温期の違い、排卵日の見分け方、体温が安定しない時の対処法まで。基礎体温計の選び方も紹介。">
+<link rel="canonical" href="https://hairan-keisan.vercel.app/kiso-taion/">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="基礎体温と排卵日の関係｜グラフの見方を解説">
+<meta property="og:description" content="低温期・高温期の違い、排卵日の見分け方を解説。基礎体温で妊活を有利に進めよう。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://hairan-keisan.vercel.app/kiso-taion/">
+<meta property="og:image" content="https://hairan-keisan.vercel.app/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3985655020038392" crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R89HB4D383"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-R89HB4D383');</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{--pink:#e88fa8;--pink-l:#fce8f0;--purple:#9b7ec8;--pur-l:#f0e8ff;--orange:#e8963a;--org-l:#fff4e5;--green:#7aba8a;--grn-l:#e4f5e8;--blue:#7ab0d4;--blue-l:#e0f0fc;--text:#3a2a3e;--text2:#7a607e;--text3:#b09ab8;--border:#f0d8e8;--bg:#fff5fb;--bg2:#fff;--shadow:rgba(58,42,62,0.08);}
+body{background:var(--bg);color:var(--text);font-family:'Hiragino Kaku Gothic ProN','Yu Gothic',sans-serif;line-height:1.8;}
+.site-header{background:var(--bg2);border-bottom:2px solid #fdd8e8;padding:16px;text-align:center;box-shadow:0 2px 12px var(--shadow);}
+.site-header a{color:var(--text2);font-size:13px;text-decoration:none;}
+.breadcrumb{font-size:12px;color:var(--text3);margin-top:4px;}
+.breadcrumb a{color:var(--text3);text-decoration:none;}
+.wrap{max-width:720px;margin:0 auto;padding:28px 16px 80px;}
+.ad-area{background:var(--bg2);border:1px dashed var(--border);border-radius:8px;min-height:90px;display:flex;align-items:center;justify-content:center;color:var(--text3);font-size:11px;margin:16px 0;overflow:hidden;}
+h1{font-size:clamp(20px,5vw,28px);font-weight:900;color:var(--text);line-height:1.4;margin-bottom:8px;}
+.lead{font-size:14px;color:var(--text2);line-height:1.9;margin-bottom:24px;padding:16px;background:var(--pink-l);border-radius:12px;border-left:3px solid var(--pink);}
+h2{font-size:18px;font-weight:700;color:var(--text);margin:32px 0 12px;padding-bottom:8px;border-bottom:2px solid var(--border);}
+h3{font-size:15px;font-weight:700;color:var(--text);margin:20px 0 8px;}
+p{font-size:14px;color:var(--text2);line-height:1.9;margin-bottom:12px;}
+ul,ol{font-size:14px;color:var(--text2);line-height:1.9;margin:8px 0 12px 20px;}
+li{margin-bottom:4px;}
+.phase-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0;}
+.phase-card{border-radius:14px;padding:16px;}
+.phase-card.low{background:var(--blue-l);border:1px solid rgba(122,176,212,0.3);}
+.phase-card.high{background:var(--pink-l);border:1px solid rgba(232,143,168,0.3);}
+.phase-label{font-size:11px;font-weight:700;letter-spacing:0.1em;margin-bottom:6px;}
+.phase-card.low .phase-label{color:var(--blue);}
+.phase-card.high .phase-label{color:var(--pink);}
+.phase-temp{font-size:22px;font-weight:900;color:var(--text);margin-bottom:4px;}
+.phase-desc{font-size:12px;color:var(--text2);line-height:1.7;}
+/* 簡易グラフ */
+.graph-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:20px;margin:20px 0;}
+.graph-label{font-size:12px;color:var(--text2);margin-bottom:12px;font-weight:700;}
+.graph{display:flex;align-items:flex-end;gap:3px;height:80px;padding-bottom:4px;border-bottom:1px solid var(--border);}
+.graph-bar{flex:1;border-radius:3px 3px 0 0;transition:height 0.3s;}
+.bar-low{background:var(--blue);}
+.bar-ov{background:var(--pink);position:relative;}
+.bar-high{background:var(--pink-l);border:1px solid var(--pink);}
+.graph-days{display:flex;gap:3px;margin-top:4px;}
+.graph-day{flex:1;text-align:center;font-size:9px;color:var(--text3);}
+.graph-legend{display:flex;gap:12px;margin-top:10px;flex-wrap:wrap;}
+.gl-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text2);}
+.gl-dot{width:10px;height:10px;border-radius:3px;}
+.info-box{background:var(--pur-l);border-radius:12px;padding:16px;margin:16px 0;border-left:3px solid var(--purple);}
+.warn-box{background:var(--org-l);border-radius:12px;padding:16px;margin:16px 0;border-left:3px solid var(--orange);}
+.cta-box{background:linear-gradient(135deg,var(--pink-l),var(--pur-l));border:1px solid rgba(232,143,168,0.3);border-radius:20px;padding:24px;text-align:center;margin:28px 0;}
+.cta-btn{display:inline-block;padding:14px 36px;background:linear-gradient(135deg,var(--pink),var(--purple));border-radius:50px;color:#fff;font-size:15px;font-weight:700;text-decoration:none;box-shadow:0 4px 16px rgba(232,143,168,0.35);transition:transform 0.15s;}
+.cta-btn:hover{transform:translateY(-2px);}
+.rel-links{display:flex;flex-direction:column;gap:8px;margin-top:12px;}
+.rel-link{padding:14px;background:var(--bg2);border:1px solid var(--border);border-radius:12px;text-decoration:none;display:flex;align-items:center;gap:10px;transition:background 0.15s;}
+.rel-link:hover{background:var(--pink-l);}
+.rel-link-text{font-size:13px;font-weight:700;color:var(--text);}
+.rel-link-sub{font-size:11px;color:var(--text3);margin-top:2px;}
+footer{text-align:center;padding:24px 16px;color:var(--text3);font-size:11px;line-height:1.8;}
+footer a{color:var(--text3);}
+@media(max-width:480px){.phase-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <a href="../">🌸 排卵日計算ツール</a>
+  <div class="breadcrumb">
+    <a href="../">ホーム</a> &rsaquo; 基礎体温と排卵日の関係
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="ad-area">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3985655020038392" data-ad-slot="9624849394" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <h1>基礎体温と排卵日の関係<br>グラフの見方・測り方を解説</h1>
+
+  <p class="lead">基礎体温（BBT）を毎朝記録することで、自分の排卵日のパターンが見えてきます。この記事では低温期・高温期の違い、排卵日の見分け方、体温が安定しない時の対処法を解説します。</p>
+
+  <h2>基礎体温とは？</h2>
+  <p>基礎体温とは、身体が最も安静な状態（目覚め直後・起き上がる前）に測った体温のことです。通常の体温計（36.5℃〜）とは異なり、<strong>小数点2桁まで測定できる専用の基礎体温計</strong>が必要です。</p>
+  <p>女性の基礎体温は生理周期に合わせて規則的に変動し、排卵日を境に「低温期」から「高温期」に切り替わります。</p>
+
+  <h2>低温期・高温期の特徴</h2>
+  <div class="phase-grid">
+    <div class="phase-card low">
+      <div class="phase-label">🌙 低温期（卵胞期）</div>
+      <div class="phase-temp">〜36.6℃</div>
+      <div class="phase-desc">生理開始〜排卵日まで。エストロゲンの影響で体温が低め。卵胞が育つ時期。</div>
+    </div>
+    <div class="phase-card high">
+      <div class="phase-label">☀️ 高温期（黄体期）</div>
+      <div class="phase-temp">36.7〜</div>
+      <div class="phase-desc">排卵後〜次の生理まで約14日間。プロゲステロンの影響で体温が高め。</div>
+    </div>
+  </div>
+
+  <h2>グラフで見る排卵日のパターン</h2>
+  <div class="graph-wrap">
+    <div class="graph-label">📈 理想的な基礎体温グラフ（28日周期の例）</div>
+    <div class="graph">
+      <div class="graph-bar bar-low" style="height:30%"></div>
+      <div class="graph-bar bar-low" style="height:28%"></div>
+      <div class="graph-bar bar-low" style="height:32%"></div>
+      <div class="graph-bar bar-low" style="height:29%"></div>
+      <div class="graph-bar bar-low" style="height:31%"></div>
+      <div class="graph-bar bar-low" style="height:28%"></div>
+      <div class="graph-bar bar-low" style="height:30%"></div>
+      <div class="graph-bar bar-low" style="height:27%"></div>
+      <div class="graph-bar bar-low" style="height:29%"></div>
+      <div class="graph-bar bar-low" style="height:26%"></div>
+      <div class="graph-bar bar-low" style="height:28%"></div>
+      <div class="graph-bar bar-low" style="height:30%"></div>
+      <div class="graph-bar bar-low" style="height:27%"></div>
+      <div class="graph-bar bar-ov" style="height:24%;outline:3px solid var(--pink);outline-offset:2px;" title="排卵日"></div>
+      <div class="graph-bar bar-high" style="height:65%"></div>
+      <div class="graph-bar bar-high" style="height:70%"></div>
+      <div class="graph-bar bar-high" style="height:72%"></div>
+      <div class="graph-bar bar-high" style="height:68%"></div>
+      <div class="graph-bar bar-high" style="height:71%"></div>
+      <div class="graph-bar bar-high" style="height:69%"></div>
+      <div class="graph-bar bar-high" style="height:73%"></div>
+      <div class="graph-bar bar-high" style="height:70%"></div>
+      <div class="graph-bar bar-high" style="height:68%"></div>
+      <div class="graph-bar bar-high" style="height:71%"></div>
+      <div class="graph-bar bar-high" style="height:69%"></div>
+      <div class="graph-bar bar-high" style="height:67%"></div>
+      <div class="graph-bar bar-high" style="height:65%"></div>
+      <div class="graph-bar bar-low" style="height:30%"></div>
+    </div>
+    <div class="graph-days">
+      <div class="graph-day">1</div><div class="graph-day">3</div><div class="graph-day">5</div><div class="graph-day">7</div><div class="graph-day">9</div><div class="graph-day">11</div><div class="graph-day">13</div><div class="graph-day" style="color:var(--pink);font-weight:700;">14</div><div class="graph-day">15</div><div class="graph-day">17</div><div class="graph-day">19</div><div class="graph-day">21</div><div class="graph-day">23</div><div class="graph-day">25</div><div class="graph-day">27</div>
+    </div>
+    <div class="graph-legend">
+      <div class="gl-item"><div class="gl-dot" style="background:var(--blue)"></div>低温期</div>
+      <div class="gl-item"><div class="gl-dot" style="background:var(--pink)"></div>排卵日（最低値）</div>
+      <div class="gl-item"><div class="gl-dot" style="background:var(--pink-l);border:1px solid var(--pink)"></div>高温期</div>
+    </div>
+  </div>
+
+  <h3>排卵日を見分けるポイント</h3>
+  <ul>
+    <li>低温期の中で<strong>最も体温が低い日</strong>が排卵日であることが多い</li>
+    <li>その翌日から急激に体温が上昇する</li>
+    <li>高温期が<strong>2週間（14日）</strong>続いてから生理がくる</li>
+    <li>妊娠した場合は高温期が3週間以上続く</li>
+  </ul>
+
+  <div class="ad-area">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3985655020038392" data-ad-slot="9624849394" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <h2>体温が安定しない・グラフが読めない場合</h2>
+  <div class="warn-box">
+    <p>⚠️ 以下の場合はグラフが乱れやすいため、単独では判断しにくいです。他の方法（排卵検査薬・計算）と組み合わせましょう。</p>
+  </div>
+  <ul>
+    <li>測定時間が毎日バラバラ</li>
+    <li>睡眠時間が短かった・深夜に起きた</li>
+    <li>風邪・体調不良</li>
+    <li>アルコールを前日に飲んだ</li>
+    <li>生理不順・多嚢胞性卵巣症候群（PCOS）</li>
+  </ul>
+
+  <h2>基礎体温計の選び方</h2>
+  <p>基礎体温を測るには、<strong>0.01℃単位で測定できる婦人体温計</strong>が必要です。オムロン・テルモ・タニタなどのメーカーから2,000〜5,000円程度で購入できます。スマホアプリと連携できるものを選ぶとグラフ管理が楽になります。</p>
+
+  <div class="info-box">
+    <p>💡 <strong>測り方のコツ：</strong>目覚めたらすぐ、起き上がる前に舌下（舌の裏側）に体温計を当てて測ります。毎日同じ時間に測ると精度が上がります。</p>
+  </div>
+
+  <div class="cta-box">
+    <p>基礎体温の記録と合わせて、計算での排卵日予測も活用しましょう。タイミング推奨期間・3ヶ月先の予測まで無料で確認できます。</p>
+    <a href="../" class="cta-btn">🌸 排卵日を計算する（無料）</a>
+  </div>
+
+  <h2>関連記事・ツール</h2>
+  <div class="rel-links">
+    <a class="rel-link" href="../hairan-itsu/">
+      <span style="font-size:22px;">📅</span>
+      <div>
+        <div class="rel-link-text">排卵日はいつ？正確に知る4つの方法</div>
+        <div class="rel-link-sub">計算・基礎体温・排卵検査薬・病院での確認法を比較</div>
+      </div>
+    </a>
+    <a class="rel-link" href="https://ninsin-keisan.vercel.app/kentai-itsukara/">
+      <span style="font-size:22px;">💊</span>
+      <div>
+        <div class="rel-link-text">妊娠検査薬はいつから使える？</div>
+        <div class="rel-link-sub">高温期が続いたら検査薬のタイミングを確認</div>
+      </div>
+    </a>
+    <a class="rel-link" href="https://ninsin-keisan.vercel.app/">
+      <span style="font-size:22px;">🤰</span>
+      <div>
+        <div class="rel-link-text">妊娠週数・出産予定日計算ツール</div>
+        <div class="rel-link-sub">妊娠が確認できたら週数・出産予定日を計算</div>
+      </div>
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  <p><a href="../">排卵日計算ツール</a> ／ <a href="../privacy.html">プライバシーポリシー</a> ／ <a href="../contact.html">お問い合わせ</a></p>
+  <p style="margin-top:4px;">© 2026 排卵日計算ツール ※ 本記事の情報は参考目的です。医療判断は必ず担当医師にご相談ください。</p>
+  <p style="margin-top:4px;">参考：<a href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kodomo/kodomo_kosodate/boshi-hoken/" target="_blank" rel="noopener">厚生労働省 母子保健</a> ／ <a href="https://www.jsog.or.jp/" target="_blank" rel="noopener">日本産科婦人科学会</a></p>
+</footer>
+</body>
+</html>
