@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>OGP生成｜排卵日計算ツール</title></head>
+<body style="background:#fff5fb;display:flex;align-items:center;justify-content:center;flex-direction:column;min-height:100vh;margin:0">
+<canvas id="c" width="1200" height="630"></canvas>
+<script>
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+const W = 1200, H = 630;
+
+function roundRect(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x+r,y); ctx.lineTo(x+w-r,y);
+  ctx.quadraticCurveTo(x+w,y,x+w,y+r);
+  ctx.lineTo(x+w,y+h-r);
+  ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);
+  ctx.lineTo(x+r,y+h);
+  ctx.quadraticCurveTo(x,y+h,x,y+h-r);
+  ctx.lineTo(x,y+r);
+  ctx.quadraticCurveTo(x,y,x+r,y);
+  ctx.closePath();
+}
+
+const bg = ctx.createLinearGradient(0, 0, W, H);
+bg.addColorStop(0, '#fff5fb'); bg.addColorStop(0.5, '#fff0f8'); bg.addColorStop(1, '#f8f0ff');
+ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+
+const g1 = ctx.createRadialGradient(W*0.85, H*0.15, 0, W*0.85, H*0.15, 300);
+g1.addColorStop(0, 'rgba(232,143,168,0.22)'); g1.addColorStop(1, 'transparent');
+ctx.fillStyle = g1; ctx.fillRect(0, 0, W, H);
+
+const g2 = ctx.createRadialGradient(W*0.15, H*0.85, 0, W*0.15, H*0.85, 240);
+g2.addColorStop(0, 'rgba(155,126,200,0.18)'); g2.addColorStop(1, 'transparent');
+ctx.fillStyle = g2; ctx.fillRect(0, 0, W, H);
+
+[[80,80,18],[180,50,12],[1100,80,20],[1050,160,12],[60,540,14],[140,590,18],[1120,520,16],[1080,590,12],[600,35,10]].forEach(([x,y,r])=>{
+  ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI*2);
+  ctx.fillStyle = 'rgba(232,143,168,0.13)'; ctx.fill();
+});
+
+ctx.strokeStyle = 'rgba(232,143,168,0.3)'; ctx.lineWidth = 2;
+roundRect(ctx, 36, 36, W-72, H-72, 24); ctx.stroke();
+
+[[36,36,1,1],[W-36,36,-1,1],[36,H-36,1,-1],[W-36,H-36,-1,-1]].forEach(([x,y,dx,dy])=>{
+  ctx.beginPath(); ctx.moveTo(x+dx*28,y); ctx.lineTo(x,y); ctx.lineTo(x,y+dy*28);
+  ctx.strokeStyle='rgba(155,126,200,0.45)'; ctx.lineWidth=2.5; ctx.stroke();
+});
+
+ctx.font = '96px serif'; ctx.textAlign = 'center';
+ctx.fillText('🌸', W/2, 195);
+
+const tg = ctx.createLinearGradient(W/2-300,0,W/2+300,0);
+tg.addColorStop(0,'#a04070'); tg.addColorStop(0.4,'#e88fa8');
+tg.addColorStop(0.65,'#9b7ec8'); tg.addColorStop(1,'#a04070');
+ctx.fillStyle = tg;
+ctx.font = 'bold 60px "Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif';
+ctx.shadowColor = 'rgba(232,143,168,0.3)'; ctx.shadowBlur = 16;
+ctx.fillText('排卵日計算ツール', W/2, 310);
+ctx.shadowBlur = 0;
+
+ctx.fillStyle = 'rgba(58,42,62,0.5)';
+ctx.font = '26px "Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif';
+ctx.fillText('タイミング法・次の生理予定日・検査薬使用日を自動計算', W/2, 368);
+
+ctx.beginPath(); ctx.moveTo(W/2-130,396); ctx.lineTo(W/2-20,396);
+ctx.moveTo(W/2+20,396); ctx.lineTo(W/2+130,396);
+ctx.strokeStyle='rgba(232,143,168,0.4)'; ctx.lineWidth=1; ctx.stroke();
+ctx.font='14px serif'; ctx.fillStyle='rgba(232,143,168,0.8)';
+ctx.fillText('✦', W/2, 401);
+
+ctx.fillStyle = 'rgba(155,126,200,0.6)';
+ctx.font = '21px "Hiragino Kaku Gothic ProN",sans-serif';
+ctx.fillText('hairan-keisan.vercel.app', W/2, 448);
+
+const tags = [['排卵日','#e88fa8','#fce8f0'],['タイミング法','#e8963a','#fff4e5'],['生理周期','#9b7ec8','#f0e8ff'],['検査薬','#7aba8a','#e4f5e8'],['妊活','#7ab0d4','#e0f0fc']];
+const tw = 150, bg2 = 12, btotal = tags.length*tw+(tags.length-1)*bg2;
+const bsx = (W-btotal)/2;
+tags.forEach(([label,color,bg],i)=>{
+  const bx = bsx+i*(tw+bg2);
+  ctx.fillStyle=bg; roundRect(ctx,bx,472,tw,38,19); ctx.fill();
+  ctx.strokeStyle=color; ctx.lineWidth=1.5; roundRect(ctx,bx,472,tw,38,19); ctx.stroke();
+  ctx.fillStyle=color; ctx.font='bold 16px "Hiragino Kaku Gothic ProN",sans-serif';
+  ctx.fillText(label, bx+tw/2, 496);
+});
+
+ctx.fillStyle='rgba(232,143,168,0.85)';
+roundRect(ctx,W/2-28,528,56,24,12); ctx.fill();
+ctx.fillStyle='#fff'; ctx.font='bold 12px sans-serif';
+ctx.fillText('無 料', W/2, 545);
+
+setTimeout(()=>{
+  const a=document.createElement('a'); a.download='ogp.png';
+  a.href=canvas.toDataURL('image/png'); a.click();
+  document.body.innerHTML+='<p style="color:#e88fa8;text-align:center;font-family:sans-serif;margin-top:20px">✅ ogp.png をダウンロードしました！</p>';
+}, 500);
+</script>
+</body>
+</html>
